@@ -95,6 +95,9 @@ BuildRequires: pkgconfig(xkbcommon)
 BuildRequires: pkgconfig(xrandr)
 BuildRequires: pkgconfig(xrender)
 BuildRequires: sassc
+
+BuildRequires: vulkan-headers
+
 %rename gtk+4.0
 
 %if %enable_tests
