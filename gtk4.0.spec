@@ -48,54 +48,53 @@
 
 Name:		%{pkgname}%{api_version}
 Version:	3.99.5
-Release:	%mkrel 1
+Release:	1
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
 Group:		System/Libraries
 Source0:	https://download.gnome.org/sources/%{pkgname}/%{url_ver}/%{pkgname}-%{version}.tar.xz
-# (tv) fix misplaced tooltips in drakx/installer (mga#11893, bgo#698730):
-Source1:	0001-tooltip-Fix-possibly-briefly-appearing-at-0x0.patch
 URL:		https://www.gtk.org
+
 Requires:	common-licenses
-# (tv) fix build when using archive from git.gnome.org:
-BuildRequires:	autoconf-archive
-BuildRequires:  cups-devel
-BuildRequires:	gettext-devel
-BuildRequires:	git
-BuildRequires:	gtk-doc
-BuildRequires:	meson
-BuildRequires:	pkgconfig(atk) >= %{atk_version}
-BuildRequires:	pkgconfig(atk-bridge-2.0)
-BuildRequires:  pkgconfig(avahi-gobject)
-BuildRequires:	pkgconfig(cairo) >= %{cairo_version}
-BuildRequires:  pkgconfig(cairo-gobject) >= %{cairo_version}
-BuildRequires:	pkgconfig(colord)
-BuildRequires:  pkgconfig(egl)
-BuildRequires:	pkgconfig(epoxy)
-BuildRequires:	pkgconfig(gdk-pixbuf-2.0) >= %{gdk_pixbuf_version}
-BuildRequires:	pkgconfig(glib-2.0) >= %{glib2_version}
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:	pkgconfig(graphene-gobject-1.0)
-BuildRequires:	pkgconfig(gstreamer-player-1.0)
-BuildRequires:	pkgconfig(iso-codes)
-BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:	pkgconfig(pango) >= %{pango_version}
-BuildRequires:  pkgconfig(rest-0.7)
-BuildRequires:  pkgconfig(vulkan)
-BuildRequires:	pkgconfig(wayland-client) >= %{wayland_version}
-BuildRequires:	pkgconfig(wayland-cursor) >= %{wayland_version}
-BuildRequires:	pkgconfig(wayland-egl) >= %{wayland_version}
-BuildRequires:  pkgconfig(wayland-protocols) >= %{wayland_protocols_version}
-BuildRequires:	pkgconfig(xcomposite)
-BuildRequires:	pkgconfig(xcursor)
-BuildRequires:	pkgconfig(xdamage)
-BuildRequires:	pkgconfig(xfixes)
-BuildRequires:	pkgconfig(xi)
-BuildRequires:	pkgconfig(xinerama)
-BuildRequires:	pkgconfig(xkbcommon)
-BuildRequires:	pkgconfig(xrandr)
-BuildRequires:  pkgconfig(xrender)
-BuildRequires:	sassc
+
+BuildRequires: autoconf-archive
+BuildRequires: cups-devel
+BuildRequires: gettext-devel
+BuildRequires: git
+BuildRequires: gtk-doc
+BuildRequires: meson
+BuildRequires: pkgconfig(atk) >= %{atk_version}
+BuildRequires: pkgconfig(atk-bridge-2.0)
+BuildRequires: pkgconfig(avahi-gobject)
+BuildRequires: pkgconfig(cairo) >= %{cairo_version}
+BuildRequires: pkgconfig(cairo-gobject) >= %{cairo_version}
+BuildRequires: pkgconfig(colord)
+BuildRequires: pkgconfig(egl)
+BuildRequires: pkgconfig(epoxy)
+BuildRequires: pkgconfig(gdk-pixbuf-2.0) >= %{gdk_pixbuf_version}
+BuildRequires: pkgconfig(glib-2.0) >= %{glib2_version}
+BuildRequires: pkgconfig(gobject-introspection-1.0)
+BuildRequires: pkgconfig(graphene-gobject-1.0)
+BuildRequires: pkgconfig(gstreamer-player-1.0)
+BuildRequires: pkgconfig(iso-codes)
+BuildRequires: pkgconfig(json-glib-1.0)
+BuildRequires: pkgconfig(pango) >= %{pango_version}
+BuildRequires: pkgconfig(rest-0.7)
+BuildRequires: pkgconfig(vulkan)
+BuildRequires: pkgconfig(wayland-client) >= %{wayland_version}
+BuildRequires: pkgconfig(wayland-cursor) >= %{wayland_version}
+BuildRequires: pkgconfig(wayland-egl) >= %{wayland_version}
+BuildRequires: pkgconfig(wayland-protocols) >= %{wayland_protocols_version}
+BuildRequires: pkgconfig(xcomposite)
+BuildRequires: pkgconfig(xcursor)
+BuildRequires: pkgconfig(xdamage)
+BuildRequires: pkgconfig(xfixes)
+BuildRequires: pkgconfig(xi)
+BuildRequires: pkgconfig(xinerama)
+BuildRequires: pkgconfig(xkbcommon)
+BuildRequires: pkgconfig(xrandr)
+BuildRequires: pkgconfig(xrender)
+BuildRequires: sassc
 %rename gtk+4.0
 
 %if %enable_tests
