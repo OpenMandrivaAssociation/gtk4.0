@@ -52,8 +52,12 @@ Release:	1
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
 Group:		System/Libraries
-Source0:	https://download.gnome.org/sources/%{pkgname}/%{url_ver}/%{pkgname}-%{version}.tar.xz
 URL:		https://www.gtk.org
+Source0:	https://download.gnome.org/sources/%{pkgname}/%{url_ver}/%{pkgname}-%{version}.tar.xz
+
+# Fedora patches
+Patch0: gtk4-gcc11.patch 
+
 
 Requires:	common-licenses
 
