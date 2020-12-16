@@ -6,7 +6,7 @@
 # enable_bootstrap: Toggle if bootstrapping package
 #      0 = no
 #      1 = yes
-%define enable_bootstrap 0
+%define enable_bootstrap 1
 
 # enable_tests: Run test suite in build
 #      0 = no
