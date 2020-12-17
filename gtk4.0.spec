@@ -35,7 +35,7 @@
 %define api			4
 %define api_version		4.0
 %define binary_version		4.0.0
-%define lib_major		0
+%define lib_major		1
 %define libname			%mklibname %{pkgname} %{api} %{lib_major}
 %define girname			%mklibname gtk-gir %{api_version}
 %define develname		%mklibname -d %{pkgname} %{api_version}
@@ -57,7 +57,7 @@ Source0:	https://download.gnome.org/sources/%{pkgname}/%{url_ver}/%{pkgname}-%{v
 
 # Fedora patches
 Patch0: gtk4-gcc11.patch 
-
+Patch1: gtk-4.0.0-compile.patch
 
 Requires:	common-licenses
 
