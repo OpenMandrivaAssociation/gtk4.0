@@ -140,9 +140,9 @@ Summary:	%{summary}
 Group:		%{group}
 Provides:	%mklibname %{pkgname}%{api} = %{version}-%{release}
 Provides:	%mklibname %{name} = %{version}-%{release}
-Requires:	%mklibname glib2.0 >= %{glib2_version}
-Requires:	%mklibname pango1.0 >= %{pango_version}
-Requires:	%mklibname atk1.0_0 >= %{atk_version}
+Requires:	%mklibname glib2.0
+Requires:	%mklibname pango1.0
+Requires:	%mklibname atk1.0_0
 Requires:	gtk4.0 = %{version}-%{release}
 Requires:	glib2.0-common
 Obsoletes:	%{mklibname gtk+4.0 %{api} %{lib_major} } <= %{version}-%{release} 
@@ -154,7 +154,7 @@ Requires:	adwaita-icon-theme
 Requires:	hicolor-icon-theme
 
 Requires(posttrans):	gtk4.0
-Requires(posttrans):	%mklibname GLX_mesa0 >= 10.2.3-1
+Requires(posttrans):	%mklibname GLX_mesa0
 
 %description -n %{libname}
 This package contains the library needed to run programs dynamically
@@ -183,9 +183,9 @@ Provides:	%{name}-devel = %{version}-%{release}
 Provides:	gtk4-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}
 Requires:	%{girname} = %{version}
-Requires:	pkgconfig(gdk-pixbuf-2.0) >= %gdk_pixbuf_version
-Requires:	pkgconfig(atk) >= %{atk_version}
-Requires:	pkgconfig(pango) >= %{pango_version}
+Requires:	pkgconfig(gdk-pixbuf-2.0)
+Requires:	pkgconfig(atk)
+Requires:	pkgconfig(pango)
 
 %description -n %{develname}
 This package contains the libraries and header files that are needed
