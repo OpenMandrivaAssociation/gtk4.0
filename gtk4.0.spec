@@ -138,11 +138,11 @@ This package contains version 4 of GTK.
 %package -n %{libname}
 Summary:	%{summary}
 Group:		%{group}
-Provides:	lib%{pkgname}%{api} = %{version}-%{release}
-Provides:	lib%{name} = %{version}-%{release}
-Requires:	libglib2.0 >= %{glib2_version}
-Requires:	libpango1.0 >= %{pango_version}
-Requires:	libatk1.0 >= %{atk_version}
+Provides:	%mklibname %{pkgname}%{api} = %{version}-%{release}
+Provides:	%mklibname %{name} = %{version}-%{release}
+Requires:	%mklibname glib2.0 >= %{glib2_version}
+Requires:	%mklibname pango1.0 >= %{pango_version}
+Requires:	%mklibname atk1.0_0 >= %{atk_version}
 Requires:	gtk4.0 = %{version}-%{release}
 Requires:	glib2.0-common
 Obsoletes:	%{mklibname gtk+4.0 %{api} %{lib_major} } <= %{version}-%{release} 
@@ -154,7 +154,7 @@ Requires:	adwaita-icon-theme
 Requires:	hicolor-icon-theme
 
 Requires(posttrans):	gtk4.0
-Requires(posttrans):	libmesagl >= 10.2.3-1
+Requires(posttrans):	%mklibname GLX_mesa0 >= 10.2.3-1
 
 %description -n %{libname}
 This package contains the library needed to run programs dynamically
@@ -176,16 +176,16 @@ GObject introspection interface library for %{name}.
 Summary:	Development files for GTK
 Group:		Development/GNOME and GTK+
 Provides:	%{pkgname}%{api}-devel = %{version}-%{release}
-Provides:	lib%{pkgname}%{api}-devel = %{version}-%{release}
-Provides:	lib%{pkgname}%{api_version}-devel = %{version}-%{release}
-Provides:	lib%{pkgname}-x11-%{api_version}-devel = %{version}-%{release}
+Provides:	%mklibname %{pkgname}%{api}-devel = %{version}-%{release}
+Provides:	%mklibname %{pkgname}%{api_version}-devel = %{version}-%{release}
+Provides:	%mklibname %{pkgname}-x11-%{api_version}-devel = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Provides:	gtk4-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}
 Requires:	%{girname} = %{version}
-Requires:	libgdk_pixbuf2.0-devel >= %gdk_pixbuf_version
-Requires:	libatk1.0-devel >= %{atk_version}
-Requires:	libpango1.0-devel >= %{pango_version}
+Requires:	%mklibname gdk_pixbuf2.0-devel >= %gdk_pixbuf_version
+Requires:	%mklibname atk1.0-devel >= %{atk_version}
+Requires:	%mklibname pango1.0-devel >= %{pango_version}
 
 %description -n %{develname}
 This package contains the libraries and header files that are needed
