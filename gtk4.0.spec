@@ -183,9 +183,9 @@ Provides:	%{name}-devel = %{version}-%{release}
 Provides:	gtk4-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}
 Requires:	%{girname} = %{version}
-Requires:	%mklibname gdk_pixbuf2.0-devel >= %gdk_pixbuf_version
-Requires:	%mklibname atk1.0-devel >= %{atk_version}
-Requires:	%mklibname pango1.0-devel >= %{pango_version}
+Requires:	pkgconfig(gdk-pixbuf-2.0) >= %gdk_pixbuf_version
+Requires:	pkgconfig(atk) >= %{atk_version}
+Requires:	pkgconfig(pango) >= %{pango_version}
 
 %description -n %{develname}
 This package contains the libraries and header files that are needed
