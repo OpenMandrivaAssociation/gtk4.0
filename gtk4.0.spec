@@ -83,6 +83,8 @@ BuildRequires: pkgconfig(gstreamer-player-1.0)
 BuildRequires: pkgconfig(iso-codes)
 BuildRequires: pkgconfig(json-glib-1.0)
 BuildRequires: pkgconfig(pango) >= %{pango_version}
+BuildRequires: pkgconfig(sysprof-4)
+BuildRequires: pkgconfig(sysprof-capture-4)
 BuildRequires: pkgconfig(rest-0.7)
 BuildRequires: pkgconfig(vulkan)
 BuildRequires: pkgconfig(wayland-client) >= %{wayland_version}
@@ -207,6 +209,7 @@ rm -rf subprojects
         -Dbroadway-backend=true \
         -Dmedia-ffmpeg=disabled \
         -Dmedia-gstreamer=enabled \
+        -Dsysprof=enabled \
         -Dxinerama=enabled \
         -Dcolord=enabled \
         -Dgtk_doc=false \
