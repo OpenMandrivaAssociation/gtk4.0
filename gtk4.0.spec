@@ -140,11 +140,11 @@ Summary:	%{summary}
 Group:		%{group}
 Provides:	%mklibname %{pkgname}%{api} = %{version}-%{release}
 Provides:	%mklibname %{name} = %{version}-%{release}
-Requires:	%mklibname glib2.0
-Requires:	%mklibname pango1.0
-Requires:	%mklibname atk1.0_0
+#Requires:	%mklibname glib2.0
+#Requires:	%mklibname pango1.0
+#Requires:	%mklibname atk1.0_0
 Requires:	gtk4.0 = %{version}-%{release}
-Requires:	glib2.0-common
+#Requires:	glib2.0-common
 Obsoletes:	%{mklibname gtk+4.0 %{api} %{lib_major} } <= %{version}-%{release} 
 Provides:	%{mklibname gtk+4.0 %{api} %{lib_major} } = %{version}-%{release}
 
@@ -154,7 +154,7 @@ Requires:	adwaita-icon-theme
 Requires:	hicolor-icon-theme
 
 Requires(posttrans):	gtk4.0
-Requires(posttrans):	%mklibname GLX_mesa0
+#Requires(posttrans):	%mklibname GLX_mesa0
 
 %description -n %{libname}
 This package contains the library needed to run programs dynamically
