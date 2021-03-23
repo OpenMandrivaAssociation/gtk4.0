@@ -56,8 +56,7 @@ URL:		https://www.gtk.org
 Source0:	https://download.gnome.org/sources/%{pkgname}/%{url_ver}/%{pkgname}-%{version}.tar.xz
 
 # Fedora patches
-#Patch0: gtk4-gcc11.patch 
-#Patch1: gtk-4.0.0-compile.patch
+
 
 Requires:	common-licenses
 
