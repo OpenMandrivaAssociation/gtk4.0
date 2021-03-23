@@ -47,7 +47,7 @@
 
 
 Name:		%{pkgname}%{api_version}
-Version:	4.0.0
+Version:	4.1.2
 Release:	1
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
@@ -56,8 +56,7 @@ URL:		https://www.gtk.org
 Source0:	https://download.gnome.org/sources/%{pkgname}/%{url_ver}/%{pkgname}-%{version}.tar.xz
 
 # Fedora patches
-Patch0: gtk4-gcc11.patch 
-Patch1: gtk-4.0.0-compile.patch
+
 
 Requires:	common-licenses
 
@@ -83,6 +82,8 @@ BuildRequires: pkgconfig(gstreamer-player-1.0)
 BuildRequires: pkgconfig(iso-codes)
 BuildRequires: pkgconfig(json-glib-1.0)
 BuildRequires: pkgconfig(pango) >= %{pango_version}
+BuildRequires: pkgconfig(sysprof-4)
+BuildRequires: pkgconfig(sysprof-capture-4)
 BuildRequires: pkgconfig(rest-0.7)
 BuildRequires: pkgconfig(vulkan)
 BuildRequires: pkgconfig(wayland-client) >= %{wayland_version}
@@ -207,6 +208,7 @@ rm -rf subprojects
         -Dbroadway-backend=true \
         -Dmedia-ffmpeg=disabled \
         -Dmedia-gstreamer=enabled \
+        -Dsysprof=enabled \
         -Dxinerama=enabled \
         -Dcolord=enabled \
         -Dgtk_doc=false \
