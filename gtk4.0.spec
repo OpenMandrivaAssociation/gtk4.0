@@ -55,7 +55,12 @@ Group:		System/Libraries
 URL:		https://www.gtk.org
 Source0:	https://download.gnome.org/sources/%{pkgname}/%{url_ver}/%{pkgname}-%{version}.tar.xz
 
+# Backported from upstream
+Patch0:         0001-build-Fix-detection-for-pre-compiled-css-files.patch
+
 # Fedora patches
+
+# Mandriva patches
 
 
 Requires:	common-licenses
@@ -79,8 +84,11 @@ BuildRequires: pkgconfig(glib-2.0) >= %{glib2_version}
 BuildRequires: pkgconfig(gobject-introspection-1.0)
 BuildRequires: pkgconfig(graphene-gobject-1.0)
 BuildRequires: pkgconfig(gstreamer-player-1.0)
+BuildRequires: pkgconfig(gi-docgen)
 BuildRequires: pkgconfig(iso-codes)
 BuildRequires: pkgconfig(json-glib-1.0)
+BuildRequires: pkgconfig(libavcodec)
+BuildRequires: pkgconfig(librsvg-2.0)
 BuildRequires: pkgconfig(pango) >= %{pango_version}
 BuildRequires: pkgconfig(sysprof-4)
 BuildRequires: pkgconfig(sysprof-capture-4)
@@ -206,11 +214,13 @@ rm -rf subprojects
         -Dx11-backend=true \
         -Dwayland-backend=true \
         -Dbroadway-backend=true \
-        -Dmedia-ffmpeg=disabled \
+        -Dvulkan=enabled \
+        -Dmedia-ffmpeg=enabled \
         -Dmedia-gstreamer=enabled \
         -Dsysprof=enabled \
         -Dxinerama=enabled \
         -Dcolord=enabled \
+        -Dcloudproviders=disabled \
         -Dgtk_doc=false \
         -Dman-pages=true \
         -Dinstall-tests=false
@@ -233,8 +243,8 @@ mkdir -p $RPM_BUILD_ROOT%{_libdir}/gtk-%{api_version}/modules
 # these files in place or a fix to gnome-tweak-tool and other theme choosers to
 # hard-code Adwaita.
 # See https://bugzilla.gnome.org/show_bug.cgi?id=733420
-mkdir -p %{buildroot}%{_datadir}/themes/Adwaita/gtk-4.0
-cp -a gtk/theme/Adwaita/gtk{,-dark}.css %{buildroot}%{_datadir}/themes/Adwaita/gtk-4.0
+#mkdir -p %{buildroot}%{_datadir}/themes/Adwaita/gtk-4.0
+#cp -a gtk/theme/Adwaita/gtk{,-dark}.css %{buildroot}%{_datadir}/themes/Adwaita/gtk-4.0
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
@@ -253,7 +263,7 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_bindir}/gtk4-update-icon-cache
 %{_mandir}/man1/gtk4-launch.1*
 %{_mandir}/man1/gtk4-update-icon-cache.1*
-%{_datadir}/themes
+#{_datadir}/themes
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.ColorChooser.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.Debug.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.EmojiChooser.gschema.xml
@@ -272,6 +282,7 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_libdir}/libgtk-4.so.%{lib_major}.*
 %{_libdir}/libgtk-4.so.%{lib_major}
 %{_libdir}/gtk-%{api_version}/%{binary_version}/media/libmedia-gstreamer.so
+%{_libdir}/gtk-%{api_version}/%{binary_version}/media/libmedia-ffmpeg.so
 
 %files -n %{girname}
 %{_libdir}/girepository-1.0/Gdk-%{api_version}.typelib
