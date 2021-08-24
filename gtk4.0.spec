@@ -84,8 +84,10 @@ BuildRequires: pkgconfig(glib-2.0) >= %{glib2_version}
 BuildRequires: pkgconfig(gobject-introspection-1.0)
 BuildRequires: pkgconfig(graphene-gobject-1.0)
 BuildRequires: pkgconfig(gstreamer-player-1.0)
+BuildRequires: pkgconfig(gi-docgen)
 BuildRequires: pkgconfig(iso-codes)
 BuildRequires: pkgconfig(json-glib-1.0)
+BuildRequires: pkgconfig(librsvg-2.0)
 BuildRequires: pkgconfig(pango) >= %{pango_version}
 BuildRequires: pkgconfig(sysprof-4)
 BuildRequires: pkgconfig(sysprof-capture-4)
@@ -211,11 +213,13 @@ rm -rf subprojects
         -Dx11-backend=true \
         -Dwayland-backend=true \
         -Dbroadway-backend=true \
-        -Dmedia-ffmpeg=disabled \
+        -Dvulkan=enabled \
+        -Dmedia-ffmpeg=enabled \
         -Dmedia-gstreamer=enabled \
         -Dsysprof=enabled \
         -Dxinerama=enabled \
         -Dcolord=enabled \
+        -Dcloudproviders=disabled \
         -Dgtk_doc=false \
         -Dman-pages=true \
         -Dinstall-tests=false
@@ -258,7 +262,7 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_bindir}/gtk4-update-icon-cache
 %{_mandir}/man1/gtk4-launch.1*
 %{_mandir}/man1/gtk4-update-icon-cache.1*
-%{_datadir}/themes
+#{_datadir}/themes
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.ColorChooser.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.Debug.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.EmojiChooser.gschema.xml
