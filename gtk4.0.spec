@@ -87,6 +87,7 @@ BuildRequires: pkgconfig(gstreamer-player-1.0)
 BuildRequires: pkgconfig(gi-docgen)
 BuildRequires: pkgconfig(iso-codes)
 BuildRequires: pkgconfig(json-glib-1.0)
+BuildRequires: pkgconfig(libavcodec)
 BuildRequires: pkgconfig(librsvg-2.0)
 BuildRequires: pkgconfig(pango) >= %{pango_version}
 BuildRequires: pkgconfig(sysprof-4)
