@@ -282,6 +282,7 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_libdir}/libgtk-4.so.%{lib_major}.*
 %{_libdir}/libgtk-4.so.%{lib_major}
 %{_libdir}/gtk-%{api_version}/%{binary_version}/media/libmedia-gstreamer.so
+%{_libdir}/gtk-%{api_version}/%{binary_version}/media/libmedia-ffmpeg.so
 
 %files -n %{girname}
 %{_libdir}/girepository-1.0/Gdk-%{api_version}.typelib
