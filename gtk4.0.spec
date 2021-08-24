@@ -55,7 +55,12 @@ Group:		System/Libraries
 URL:		https://www.gtk.org
 Source0:	https://download.gnome.org/sources/%{pkgname}/%{url_ver}/%{pkgname}-%{version}.tar.xz
 
+# Backported from upstream
+Patch0:         0001-build-Fix-detection-for-pre-compiled-css-files.patch
+
 # Fedora patches
+
+# Mandriva patches
 
 
 Requires:	common-licenses
