@@ -238,8 +238,8 @@ mkdir -p $RPM_BUILD_ROOT%{_libdir}/gtk-%{api_version}/modules
 # these files in place or a fix to gnome-tweak-tool and other theme choosers to
 # hard-code Adwaita.
 # See https://bugzilla.gnome.org/show_bug.cgi?id=733420
-mkdir -p %{buildroot}%{_datadir}/themes/Adwaita/gtk-4.0
-cp -a gtk/theme/Adwaita/gtk{,-dark}.css %{buildroot}%{_datadir}/themes/Adwaita/gtk-4.0
+#mkdir -p %{buildroot}%{_datadir}/themes/Adwaita/gtk-4.0
+#cp -a gtk/theme/Adwaita/gtk{,-dark}.css %{buildroot}%{_datadir}/themes/Adwaita/gtk-4.0
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
