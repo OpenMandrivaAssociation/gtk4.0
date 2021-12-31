@@ -107,6 +107,7 @@ BuildRequires: pkgconfig(xkbcommon)
 BuildRequires: pkgconfig(xrandr)
 BuildRequires: pkgconfig(xrender)
 BuildRequires: python3.9dist(pygobject)
+BuildRequires: python3dist(docutils)
 BuildRequires: sassc
 
 BuildRequires: vulkan-headers
