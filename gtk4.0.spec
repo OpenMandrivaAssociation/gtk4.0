@@ -217,7 +217,6 @@ rm -rf subprojects
         -Dmedia-ffmpeg=enabled \
         -Dmedia-gstreamer=enabled \
         -Dsysprof=enabled \
-        -Dxinerama=enabled \
         -Dcolord=enabled \
         -Dcloudproviders=disabled \
         -Dgtk_doc=false \
