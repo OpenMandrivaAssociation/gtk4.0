@@ -106,6 +106,7 @@ BuildRequires: pkgconfig(xinerama)
 BuildRequires: pkgconfig(xkbcommon)
 BuildRequires: pkgconfig(xrandr)
 BuildRequires: pkgconfig(xrender)
+BuildRequires: python3.9dist(pygobject)
 BuildRequires: sassc
 
 BuildRequires: vulkan-headers
