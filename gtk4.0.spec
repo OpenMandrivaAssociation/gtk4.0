@@ -23,7 +23,7 @@
 
 # required version of various libraries
 %global glib2_version 2.65.0
-%global pango_version 1.47.0
+%global pango_version 1.49.0
 %global atk_version 2.15.1
 %global cairo_version 1.14.0
 %global gdk_pixbuf_version 2.30.0
@@ -47,7 +47,7 @@
 
 
 Name:		%{pkgname}%{api_version}
-Version:	4.4.1
+Version:	4.6.0
 Release:	1
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
