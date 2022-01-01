@@ -88,10 +88,14 @@ BuildRequires: pkgconfig(iso-codes)
 BuildRequires: pkgconfig(json-glib-1.0)
 BuildRequires: pkgconfig(libavcodec)
 BuildRequires: pkgconfig(librsvg-2.0)
+BuildRequires: pkgconfig(libjpeg)
+BuildRequires: pkgconfig(libpng)
+BuildRequires: pkgconfig(libtiff-4)
 BuildRequires: pkgconfig(pango) >= %{pango_version}
 BuildRequires: pkgconfig(sysprof-4)
 BuildRequires: pkgconfig(sysprof-capture-4)
 BuildRequires: pkgconfig(rest-0.7)
+BuildRequires: pkgconfig(tracker-sparql-3.0)
 BuildRequires: pkgconfig(vulkan)
 BuildRequires: pkgconfig(wayland-client) >= %{wayland_version}
 BuildRequires: pkgconfig(wayland-cursor) >= %{wayland_version}
@@ -223,6 +227,8 @@ rm -rf subprojects
         -Dcloudproviders=disabled \
         -Dgtk_doc=false \
         -Dman-pages=true \
+        -Dtracker=enabled \
+        -Dbuild-tests=false \
         -Dinstall-tests=false
 
 %meson_build
