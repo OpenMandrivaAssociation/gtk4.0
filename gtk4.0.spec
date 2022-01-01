@@ -229,7 +229,9 @@ rm -rf subprojects
         -Dman-pages=true \
         -Dtracker=enabled \
         -Dbuild-tests=false \
-        -Dinstall-tests=false
+        -Dinstall-tests=false \
+        -Dbuild-examples=false \
+        -Ddemos=false
 
 %meson_build
 
