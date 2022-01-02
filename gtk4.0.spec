@@ -59,7 +59,10 @@ Source0:	https://download.gnome.org/sources/%{pkgname}/%{url_ver}/%{pkgname}-%{v
 # Fedora patches
 
 # Mandriva patches
-
+# Stupid gnomes want to write their own build system, but don't even
+# know about different implementations of ld, or LD environment
+# variables, or CC_LD settings in their own build system...
+Patch0:		gtk-4.6.0-fix-stupid-assumptions-about-ld-being-ld.bfd.patch
 
 Requires:	common-licenses
 

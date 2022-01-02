@@ -1,0 +1,36 @@
+diff -up gtk-4.6.0/demos/gtk-demo/meson.build.omv~ gtk-4.6.0/demos/gtk-demo/meson.build
+--- gtk-4.6.0/demos/gtk-demo/meson.build.omv~	2022-01-02 02:17:56.731908450 +0100
++++ gtk-4.6.0/demos/gtk-demo/meson.build	2022-01-02 02:18:11.457970683 +0100
+@@ -162,7 +162,7 @@ if objcopy.found()
+   objcopy_supports_add_symbol = run_command(objcopy, '--help').stdout().contains('--add-symbol')
+ endif
+ 
+-ld = find_program('ld', required : false)
++ld = find_program('ld.bfd', required : false)
+ 
+ if build_machine.system() == 'linux' and objcopy.found() and objcopy_supports_add_symbol and ld.found()
+   glib_compile_resources = find_program('glib-compile-resources')
+diff -up gtk-4.6.0/demos/widget-factory/meson.build.omv~ gtk-4.6.0/demos/widget-factory/meson.build
+--- gtk-4.6.0/demos/widget-factory/meson.build.omv~	2022-01-02 02:18:25.688030687 +0100
++++ gtk-4.6.0/demos/widget-factory/meson.build	2022-01-02 02:18:30.472050832 +0100
+@@ -6,7 +6,7 @@ if objcopy.found()
+   objcopy_supports_add_symbol = run_command(objcopy, '--help').stdout().contains('--add-symbol')
+ endif
+ 
+-ld = find_program('ld', required : false)
++ld = find_program('ld.bfd', required : false)
+ 
+ if build_machine.system() == 'linux' and objcopy.found() and objcopy_supports_add_symbol and ld.found()
+   glib_compile_resources = find_program('glib-compile-resources')
+diff -up gtk-4.6.0/gtk/meson.build.omv~ gtk-4.6.0/gtk/meson.build
+--- gtk-4.6.0/gtk/meson.build.omv~	2022-01-02 02:16:17.589485517 +0100
++++ gtk-4.6.0/gtk/meson.build	2022-01-02 02:17:27.169783082 +0100
+@@ -870,7 +870,7 @@ if objcopy.found()
+   objcopy_supports_add_symbol = run_command(objcopy, '--help').stdout().contains('--add-symbol')
+ endif
+ 
+-ld = find_program('ld', required : false)
++ld = find_program('ld.bfd', required : false)
+ 
+ if not meson.is_cross_build() and build_machine.system() == 'linux' and objcopy.found() and objcopy_supports_add_symbol and ld.found()
+   glib_compile_resources = find_program('glib-compile-resources')
