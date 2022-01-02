@@ -45,11 +45,6 @@
 # "fix" underlinking:
 %define _disable_ld_no_undefined 1
 
-# use bfd to fix /usr/bin/ld -r -b binary gtk/gtk.gresource -o gtk/gtkresources_blob.o
-#ld: error: target emulation unknown: -m or at least one .o file required
-%global ldflags %{ldflags} -fuse-ld=bfd
-
-
 Name:		%{pkgname}%{api_version}
 Version:	4.6.0
 Release:	1
@@ -232,10 +227,7 @@ rm -rf subprojects
         -Dgtk_doc=false \
         -Dman-pages=true \
         -Dtracker=enabled \
-        -Dbuild-tests=false \
-        -Dinstall-tests=false \
-        -Dbuild-examples=false \
-        -Ddemos=false
+        -Dinstall-tests=false
 
 %meson_build
 
