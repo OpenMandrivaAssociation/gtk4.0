@@ -47,7 +47,7 @@
 
 Name:		%{pkgname}%{api_version}
 Version:	4.6.1
-Release:	1
+Release:	2
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
 Group:		System/Libraries
@@ -112,7 +112,7 @@ BuildRequires: pkgconfig(xinerama)
 BuildRequires: pkgconfig(xkbcommon)
 BuildRequires: pkgconfig(xrandr)
 BuildRequires: pkgconfig(xrender)
-BuildRequires: python3.9dist(pygobject)
+BuildRequires: python3.11dist(pygobject)
 BuildRequires: python3dist(docutils)
 BuildRequires: sassc
 
