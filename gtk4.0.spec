@@ -112,7 +112,7 @@ BuildRequires: pkgconfig(xinerama)
 BuildRequires: pkgconfig(xkbcommon)
 BuildRequires: pkgconfig(xrandr)
 BuildRequires: pkgconfig(xrender)
-BuildRequires: python3.11dist(pygobject)
+BuildRequires: python3dist(pygobject)
 BuildRequires: python3dist(docutils)
 BuildRequires: sassc
 
