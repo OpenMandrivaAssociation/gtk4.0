@@ -237,8 +237,7 @@ rm -rf subprojects
 %install
 %meson_install
 
-%find_lang gtk40
-%find_lang gtk40-properties
+%find_lang gtk40 --all-name
 
 mkdir -p $RPM_BUILD_ROOT%{_libdir}/gtk-%{api_version}/modules
 
@@ -263,7 +262,7 @@ make check
 kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %endif
 
-%files -f gtk40.lang -f gtk40-properties.lang
+%files -f gtk40.lang
 %doc README.md
 %{_bindir}/gtk4-query-settings
 %{_bindir}/gtk4-launch
