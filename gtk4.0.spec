@@ -46,7 +46,7 @@
 %define _disable_ld_no_undefined 1
 
 Name:		%{pkgname}%{api_version}
-Version:	4.6.7
+Version:	4.8.1
 Release:	1
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
@@ -237,8 +237,7 @@ rm -rf subprojects
 %install
 %meson_install
 
-%find_lang gtk40
-%find_lang gtk40-properties
+%find_lang gtk40 --all-name
 
 mkdir -p $RPM_BUILD_ROOT%{_libdir}/gtk-%{api_version}/modules
 
@@ -263,7 +262,7 @@ make check
 kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %endif
 
-%files -f gtk40.lang -f gtk40-properties.lang
+%files -f gtk40.lang
 %doc README.md
 %{_bindir}/gtk4-query-settings
 %{_bindir}/gtk4-launch
@@ -307,15 +306,18 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_bindir}/gtk4-demo-application
 %{_bindir}/gtk4-encode-symbolic-svg
 %{_bindir}/gtk4-icon-browser
+%{_bindir}/gtk4-node-editor
 %{_bindir}/gtk4-print-editor
 %{_bindir}/gtk4-widget-factory
 %{_libdir}/libgtk-%{api}.so
 %{_datadir}/applications/org.gtk.Demo4.desktop
 %{_datadir}/applications/org.gtk.IconBrowser4.desktop
+%{_datadir}/applications/org.gtk.gtk4.NodeEditor.desktop
 %{_datadir}/applications/org.gtk.PrintEditor4.desktop
 %{_datadir}/applications/org.gtk.WidgetFactory4.desktop
 %{_datadir}/icons/hicolor/*/apps/org.gtk.Demo4*.svg
 %{_datadir}/icons/hicolor/*/apps/org.gtk.IconBrowser4*.svg
+%{_datadir}/icons/hicolor/*/apps/org.gtk.gtk4.NodeEditor*.svg
 %{_datadir}/icons/hicolor/*/apps/org.gtk.PrintEditor4*.svg
 %{_datadir}/icons/hicolor/*/apps/org.gtk.WidgetFactory4*.svg
 %{_datadir}/gettext/
@@ -326,6 +328,7 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_datadir}/gtk-4.0/valgrind/
 %{_datadir}/metainfo/org.gtk.Demo4.appdata.xml
 %{_datadir}/metainfo/org.gtk.IconBrowser4.appdata.xml
+%{_datadir}/metainfo/org.gtk.gtk4.NodeEditor.appdata.xml
 %{_datadir}/metainfo/org.gtk.PrintEditor4.appdata.xml
 %{_datadir}/metainfo/org.gtk.WidgetFactory4.appdata.xml
 %{_mandir}/man1/gtk4-builder-tool.1*
@@ -333,5 +336,6 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_mandir}/man1/gtk4-demo-application.1*
 %{_mandir}/man1/gtk4-encode-symbolic-svg.1*
 %{_mandir}/man1/gtk4-icon-browser.1*
+%{_mandir}/man1/gtk4-node-editor.1.*
 %{_mandir}/man1/gtk4-query-settings.1*
 %{_mandir}/man1/gtk4-widget-factory.1*
