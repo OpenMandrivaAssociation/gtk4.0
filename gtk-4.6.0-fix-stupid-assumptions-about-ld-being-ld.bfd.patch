@@ -1,7 +1,7 @@
-diff -uraN gtk-4.6.2/demos/gtk-demo/meson.build omv-gtk-4.6.2/demos/gtk-demo/meson.build
---- gtk-4.6.2/demos/gtk-demo/meson.build	2022-03-19 01:40:13.939497500 +0100
-+++ omv-gtk-4.6.2/demos/gtk-demo/meson.build	2022-03-30 22:32:51.559136863 +0200
-@@ -158,7 +158,7 @@
+diff -uraN gtk-4.8.2/demos/gtk-demo/meson.build omv-gtk-4.8.2/demos/gtk-demo/meson.build
+--- gtk-4.8.2/demos/gtk-demo/meson.build	2022-10-24 19:46:56.000000000 +0200
++++ omv-gtk-4.8.2/demos/gtk-demo/meson.build	2022-10-25 17:07:07.122672672 +0200
+@@ -159,7 +159,7 @@
    objcopy_supports_add_symbol = run_command(objcopy, '--help').stdout().contains('--add-symbol')
  endif
  
@@ -10,9 +10,9 @@ diff -uraN gtk-4.6.2/demos/gtk-demo/meson.build omv-gtk-4.6.2/demos/gtk-demo/mes
  
  if not meson.is_cross_build() and build_machine.cpu_family() != 'arm' and build_machine.system() == 'linux' and objcopy.found() and objcopy_supports_add_symbol and ld.found()
    glib_compile_resources = find_program('glib-compile-resources')
-diff -uraN gtk-4.6.2/demos/widget-factory/meson.build omv-gtk-4.6.2/demos/widget-factory/meson.build
---- gtk-4.6.2/demos/widget-factory/meson.build	2022-03-19 01:40:14.108498000 +0100
-+++ omv-gtk-4.6.2/demos/widget-factory/meson.build	2022-03-30 22:33:42.207753205 +0200
+diff -uraN gtk-4.8.2/demos/widget-factory/meson.build omv-gtk-4.8.2/demos/widget-factory/meson.build
+--- gtk-4.8.2/demos/widget-factory/meson.build	2022-10-24 19:46:56.000000000 +0200
++++ omv-gtk-4.8.2/demos/widget-factory/meson.build	2022-10-25 17:07:47.247672181 +0200
 @@ -6,7 +6,7 @@
    objcopy_supports_add_symbol = run_command(objcopy, '--help').stdout().contains('--add-symbol')
  endif
@@ -22,15 +22,15 @@ diff -uraN gtk-4.6.2/demos/widget-factory/meson.build omv-gtk-4.6.2/demos/widget
  
  if not meson.is_cross_build() and build_machine.cpu_family() != 'arm' and build_machine.system() == 'linux' and objcopy.found() and objcopy_supports_add_symbol and ld.found()
    glib_compile_resources = find_program('glib-compile-resources')
-diff -uraN gtk-4.6.2/gtk/meson.build omv-gtk-4.6.2/gtk/meson.build
---- gtk-4.6.2/gtk/meson.build	2022-03-19 01:40:14.662500100 +0100
-+++ omv-gtk-4.6.2/gtk/meson.build	2022-03-30 22:34:24.967892345 +0200
-@@ -870,7 +870,7 @@
+diff -uraN gtk-4.8.2/gtk/meson.build omv-gtk-4.8.2/gtk/meson.build
+--- gtk-4.8.2/gtk/meson.build	2022-10-24 19:46:56.000000000 +0200
++++ omv-gtk-4.8.2/gtk/meson.build	2022-10-25 17:08:47.663847295 +0200
+@@ -874,7 +874,7 @@
    objcopy_supports_add_symbol = run_command(objcopy, '--help').stdout().contains('--add-symbol')
  endif
  
 -ld = find_program('ld', required : false)
 +ld = find_program('ld.bfd', required : false)
  
- if not meson.is_cross_build() and build_machine.cpu_family() != 'arm' and build_machine.system() == 'linux' and objcopy.found() and objcopy_supports_add_symbol and ld.found()
+ if not meson.is_cross_build() and build_machine.cpu_family() == 'x86_64' and build_machine.system() == 'linux' and objcopy.found() and objcopy_supports_add_symbol and ld.found()
    glib_compile_resources = find_program('glib-compile-resources')
