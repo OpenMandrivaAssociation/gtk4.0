@@ -47,7 +47,7 @@
 
 Name:		%{pkgname}%{api_version}
 Version:	4.8.2
-Release:	1
+Release:	2
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
 Group:		System/Libraries
@@ -209,6 +209,23 @@ for writing applications with version 4 of the GTK widget toolkit.
 
 #--------------------------------------------------------------------
 
+# This needs to be split out of the main package to avoid
+# a circular build dependency between gtk4 and gst-plugins-bad
+%package gstreamer
+Summary:	GStreamer plugin for gtk4 media playback
+Group:		Development/GNOME and GTK+
+
+%description gstreamer
+GStreamer plugin for gtk4 media playback
+
+This plugin adds support for playing media files with gstreamer rather
+than ffmpeg
+
+%files gstreamer
+%{_libdir}/gtk-%{api_version}/%{binary_version}/media/libmedia-gstreamer.so
+
+#--------------------------------------------------------------------
+
 %prep
 %autosetup -p1 -n gtk-%{version}
 
@@ -287,7 +304,6 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_libdir}/gtk-%{api_version}/%{binary_version}/printbackends/*.so
 %{_libdir}/libgtk-4.so.%{lib_major}.*
 %{_libdir}/libgtk-4.so.%{lib_major}
-%{_libdir}/gtk-%{api_version}/%{binary_version}/media/libmedia-gstreamer.so
 %{_libdir}/gtk-%{api_version}/%{binary_version}/media/libmedia-ffmpeg.so
 
 %files -n %{girname}
