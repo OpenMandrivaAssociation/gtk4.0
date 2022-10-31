@@ -52,7 +52,7 @@
 
 Name:		%{pkgname}%{api_version}
 Version:	4.8.2
-Release:	2
+Release:	3
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
 Group:		System/Libraries
@@ -89,9 +89,7 @@ BuildRequires: pkgconfig(gdk-pixbuf-2.0) >= %{gdk_pixbuf_version}
 BuildRequires: pkgconfig(glib-2.0) >= %{glib2_version}
 BuildRequires: pkgconfig(gobject-introspection-1.0)
 BuildRequires: pkgconfig(graphene-gobject-1.0)
-%if !%{enable_gstreamer}
 BuildRequires: pkgconfig(gstreamer-player-1.0)
-%endif
 BuildRequires: pkgconfig(gi-docgen)
 BuildRequires: pkgconfig(iso-codes)
 BuildRequires: pkgconfig(json-glib-1.0)
