@@ -8,6 +8,11 @@
 #      1 = yes
 %define enable_bootstrap 1
 
+# enable_gstreamer: Enable if non bootstrap package. Togle 0 to avoid a circular build dependency between gtk4 and gst-plugins-bad.
+#      0 = no
+#      1 = yes
+%define enable_gstreamer 1
+
 # enable_tests: Run test suite in build
 #      0 = no
 #      1 = yes
@@ -84,7 +89,9 @@ BuildRequires: pkgconfig(gdk-pixbuf-2.0) >= %{gdk_pixbuf_version}
 BuildRequires: pkgconfig(glib-2.0) >= %{glib2_version}
 BuildRequires: pkgconfig(gobject-introspection-1.0)
 BuildRequires: pkgconfig(graphene-gobject-1.0)
+%if !%{enable_gstreamer}
 BuildRequires: pkgconfig(gstreamer-player-1.0)
+%endif
 BuildRequires: pkgconfig(gi-docgen)
 BuildRequires: pkgconfig(iso-codes)
 BuildRequires: pkgconfig(json-glib-1.0)
@@ -209,23 +216,6 @@ for writing applications with version 4 of the GTK widget toolkit.
 
 #--------------------------------------------------------------------
 
-# This needs to be split out of the main package to avoid
-# a circular build dependency between gtk4 and gst-plugins-bad
-%package gstreamer
-Summary:	GStreamer plugin for gtk4 media playback
-Group:		Development/GNOME and GTK+
-
-%description gstreamer
-GStreamer plugin for gtk4 media playback
-
-This plugin adds support for playing media files with gstreamer rather
-than ffmpeg
-
-%files gstreamer
-%{_libdir}/gtk-%{api_version}/%{binary_version}/media/libmedia-gstreamer.so
-
-#--------------------------------------------------------------------
-
 %prep
 %autosetup -p1 -n gtk-%{version}
 
@@ -240,7 +230,9 @@ rm -rf subprojects
         -Dbroadway-backend=true \
         -Dvulkan=enabled \
         -Dmedia-ffmpeg=enabled \
+%if !%{enable_gstreamer}        
         -Dmedia-gstreamer=enabled \
+%endif        
         -Dsysprof=enabled \
         -Dcolord=enabled \
         -Dcloudproviders=disabled \
@@ -304,6 +296,9 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_libdir}/gtk-%{api_version}/%{binary_version}/printbackends/*.so
 %{_libdir}/libgtk-4.so.%{lib_major}.*
 %{_libdir}/libgtk-4.so.%{lib_major}
+%if !%{enable_gstreamer}
+%{_libdir}/gtk-%{api_version}/%{binary_version}/media/libmedia-gstreamer.so
+%endif
 %{_libdir}/gtk-%{api_version}/%{binary_version}/media/libmedia-ffmpeg.so
 
 %files -n %{girname}
