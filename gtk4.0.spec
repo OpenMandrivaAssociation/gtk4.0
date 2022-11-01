@@ -11,7 +11,7 @@
 # enable_gstreamer: Enable if non bootstrap package. Togle 0 to avoid a circular build dependency between gtk4 and gst-plugins-bad.
 #      0 = no
 #      1 = yes
-%define enable_gstreamer 1
+%define enable_gstreamer 0
 
 # enable_tests: Run test suite in build
 #      0 = no
