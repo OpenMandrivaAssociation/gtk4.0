@@ -13,6 +13,9 @@
 #      1 = yes
 %define enable_tests 0
 
+# Disable gstreamer to avoid a circular build dependency between gtk4 and gst-plugins-bad. Enable it after bootstraping.
+%bcond_without gstreamer
+
 %{?_without_gtkdoc: %{expand: %%define enable_gtkdoc 0}}
 %{?_without_bootstrap: %{expand: %%define enable_bootstrap 0}}
 %{?_without_tests: %{expand: %%define enable_tests 0}}
@@ -47,7 +50,7 @@
 
 Name:		%{pkgname}%{api_version}
 Version:	4.8.2
-Release:	2
+Release:	3
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
 Group:		System/Libraries
@@ -209,23 +212,6 @@ for writing applications with version 4 of the GTK widget toolkit.
 
 #--------------------------------------------------------------------
 
-# This needs to be split out of the main package to avoid
-# a circular build dependency between gtk4 and gst-plugins-bad
-%package gstreamer
-Summary:	GStreamer plugin for gtk4 media playback
-Group:		Development/GNOME and GTK+
-
-%description gstreamer
-GStreamer plugin for gtk4 media playback
-
-This plugin adds support for playing media files with gstreamer rather
-than ffmpeg
-
-%files gstreamer
-%{_libdir}/gtk-%{api_version}/%{binary_version}/media/libmedia-gstreamer.so
-
-#--------------------------------------------------------------------
-
 %prep
 %autosetup -p1 -n gtk-%{version}
 
@@ -240,7 +226,11 @@ rm -rf subprojects
         -Dbroadway-backend=true \
         -Dvulkan=enabled \
         -Dmedia-ffmpeg=enabled \
+%if %{with gstreamer}        
         -Dmedia-gstreamer=enabled \
+%else        
+        -Dmedia-gstreamer=disabled \
+%endif        
         -Dsysprof=enabled \
         -Dcolord=enabled \
         -Dcloudproviders=disabled \
@@ -305,6 +295,9 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_libdir}/libgtk-4.so.%{lib_major}.*
 %{_libdir}/libgtk-4.so.%{lib_major}
 %{_libdir}/gtk-%{api_version}/%{binary_version}/media/libmedia-ffmpeg.so
+%if %{with gstreamer}
+%{_libdir}/gtk-%{api_version}/%{binary_version}/media/libmedia-gstreamer.so
+%endif
 
 %files -n %{girname}
 %{_libdir}/girepository-1.0/Gdk-%{api_version}.typelib
