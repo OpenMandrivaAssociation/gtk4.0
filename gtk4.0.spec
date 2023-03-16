@@ -237,7 +237,8 @@ rm -rf subprojects
         -Dgtk_doc=false \
         -Dman-pages=true \
         -Dtracker=enabled \
-        -Dinstall-tests=false
+        -Dbuild-testsuite=false \
+        -Dbuild-tests=false
 
 %meson_build
 
