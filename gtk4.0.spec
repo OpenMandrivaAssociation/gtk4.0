@@ -49,7 +49,7 @@
 %define _disable_ld_no_undefined 1
 
 Name:		%{pkgname}%{api_version}
-Version:	4.8.3
+Version:	4.10.1
 Release:	1
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
@@ -237,7 +237,8 @@ rm -rf subprojects
         -Dgtk_doc=false \
         -Dman-pages=true \
         -Dtracker=enabled \
-        -Dinstall-tests=false
+        -Dbuild-testsuite=false \
+        -Dbuild-tests=false
 
 %meson_build
 
