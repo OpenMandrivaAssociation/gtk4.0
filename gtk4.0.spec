@@ -50,7 +50,7 @@
 
 Name:		%{pkgname}%{api_version}
 Version:	4.10.1
-Release:	1
+Release:	2
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
 Group:		System/Libraries
