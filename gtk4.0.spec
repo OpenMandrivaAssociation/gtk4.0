@@ -14,7 +14,7 @@
 %define enable_tests 0
 
 # Disable gstreamer to avoid a circular build dependency between gtk4 and gst-plugins-bad. Enable it after bootstraping.
-%bcond_with gstreamer
+%bcond_without gstreamer
 
 %{?_without_gtkdoc: %{expand: %%define enable_gtkdoc 0}}
 %{?_without_bootstrap: %{expand: %%define enable_bootstrap 0}}
