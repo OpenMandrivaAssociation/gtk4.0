@@ -89,8 +89,8 @@ BuildRequires: pkgconfig(pango) >= %{pango_version}
 %if !  %{with bootstrap}
 BuildRequires: pkgconfig(sysprof-4)
 BuildRequires: pkgconfig(sysprof-capture-4)
-%endif
 BuildRequires: pkgconfig(rest-0.7)
+%endif
 BuildRequires: pkgconfig(tracker-sparql-3.0)
 BuildRequires: pkgconfig(vulkan)
 BuildRequires: pkgconfig(wayland-client) >= %{wayland_version}
