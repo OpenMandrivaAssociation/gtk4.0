@@ -1,28 +1,12 @@
-# enable_gtkdoc: Toggle if gtk-doc files should be rebuilt.
-#      0 = no
-#      1 = yes
-%define enable_gtkdoc 0
-
-# enable_bootstrap: Toggle if bootstrapping package
-#      0 = no
-#      1 = yes
-%define enable_bootstrap 1
-
-# enable_tests: Run test suite in build
-#      0 = no
-#      1 = yes
-%define enable_tests 0
-
+%bcond_without bootstrap
+%if %{with bootstrap}
 # Disable gstreamer to avoid a circular build dependency between gtk4 and gst-plugins-bad. Enable it after bootstraping.
 %bcond_with gstreamer
-
-%{?_without_gtkdoc: %{expand: %%define enable_gtkdoc 0}}
-%{?_without_bootstrap: %{expand: %%define enable_bootstrap 0}}
-%{?_without_tests: %{expand: %%define enable_tests 0}}
-
-%{?_with_gtkdoc: %{expand: %%define enable_gtkdoc 1}}
-%{?_with_bootstrap: %{expand: %%define enable_bootstrap 1}}
-%{?_with_tests: %{expand: %%define enable_tests 1}}
+%else
+%bcond_without gstreamer
+%endif
+%bcond_with gtkdoc
+%bcond_with tests
 
 # required version of various libraries
 %global glib2_version 2.65.0
@@ -90,7 +74,9 @@ BuildRequires: pkgconfig(gdk-pixbuf-2.0) >= %{gdk_pixbuf_version}
 BuildRequires: pkgconfig(glib-2.0) >= %{glib2_version}
 BuildRequires: pkgconfig(gobject-introspection-1.0)
 BuildRequires: pkgconfig(graphene-gobject-1.0)
+%if %{with gstreamer}
 BuildRequires: pkgconfig(gstreamer-player-1.0)
+%endif
 BuildRequires: pkgconfig(gi-docgen)
 BuildRequires: pkgconfig(iso-codes)
 BuildRequires: pkgconfig(json-glib-1.0)
@@ -126,11 +112,11 @@ BuildRequires: vulkan-headers
 
 %rename gtk+4.0
 
-%if %enable_tests
+%if %{with tests}
 BuildRequires:	x11-server-xvfb
 %endif
 
-%if %enable_gtkdoc
+%if %{with gtkdoc}
 BuildRequires:	gtk-doc >= 1.99
 BuildRequires:	sgml-tools
 BuildRequires:	texinfo
@@ -139,7 +125,7 @@ BuildRequires:	texinfo
 # gw tests will fail without this
 BuildRequires:	fonts-ttf-dejavu
 
-%if !%{enable_bootstrap}
+%if ! %{with bootstrap}
 Recommends:	xdg-user-dirs-gtk
 %endif
 Recommends:	%mklibname gvfs 0
@@ -234,7 +220,11 @@ rm -rf subprojects
 %else        
         -Dmedia-gstreamer=disabled \
 %endif        
+%if %{with bootstrap}
+	-Dsysprof=disabled \
+%else
         -Dsysprof=enabled \
+%endif
         -Dcolord=enabled \
         -Dcloudproviders=disabled \
         -Dgtk_doc=false \
@@ -265,7 +255,7 @@ mkdir -p $RPM_BUILD_ROOT%{_libdir}/gtk-%{api_version}/modules
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
-%if %enable_tests
+%if %{with tests}
 XDISPLAY=$(i=1; while [ -f /tmp/.X$i-lock ]; do i=$(($i+1)); done; echo $i)
 %{_bindir}/Xvfb :$XDISPLAY &
 export DISPLAY=:$XDISPLAY
