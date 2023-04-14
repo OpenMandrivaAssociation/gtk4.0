@@ -1,0 +1,12 @@
+diff -up gtk-4.10.1/modules/media/gtkffmediafile.c.omv~ gtk-4.10.1/modules/media/gtkffmediafile.c
+--- gtk-4.10.1/modules/media/gtkffmediafile.c.omv~	2023-04-14 15:16:52.765946221 +0200
++++ gtk-4.10.1/modules/media/gtkffmediafile.c	2023-04-14 16:08:16.982453976 +0200
+@@ -861,7 +861,7 @@ gtk_ff_media_file_open_audio_device (Gtk
+        candidate != NULL;
+        candidate = av_output_audio_device_next (candidate))
+     {
+-      if (candidate->control_message)
++      if (candidate->name && !strcmp(candidate->name,  "alsa"))
+         break;
+     }
+ 

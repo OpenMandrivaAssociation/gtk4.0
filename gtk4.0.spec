@@ -61,11 +61,14 @@ Source0:	https://download.gnome.org/sources/%{pkgname}/%{url_ver}/%{pkgname}-%{v
 
 # Fedora patches
 
-# Mandriva patches
+# OpenMandriva patches
 # Stupid gnomes want to write their own build system, but don't even
 # know about different implementations of ld, or LD environment
 # variables, or CC_LD settings in their own build system...
 Patch0:		gtk-4.6.0-fix-stupid-assumptions-about-ld-being-ld.bfd.patch
+# FIXME this patch is not entirely correct, but should be good enough.
+# Certainly better than failing to even compile...
+Patch1:		gtk-4.10.1-ffmpeg-6.0.patch
 
 Requires:	common-licenses
 
