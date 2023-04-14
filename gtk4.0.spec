@@ -86,8 +86,10 @@ BuildRequires: pkgconfig(libjpeg)
 BuildRequires: pkgconfig(libpng)
 BuildRequires: pkgconfig(libtiff-4)
 BuildRequires: pkgconfig(pango) >= %{pango_version}
+%if !  %{with bootstrap}
 BuildRequires: pkgconfig(sysprof-4)
 BuildRequires: pkgconfig(sysprof-capture-4)
+%endif
 BuildRequires: pkgconfig(rest-0.7)
 BuildRequires: pkgconfig(tracker-sparql-3.0)
 BuildRequires: pkgconfig(vulkan)
