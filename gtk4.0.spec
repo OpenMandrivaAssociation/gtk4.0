@@ -110,6 +110,7 @@ BuildRequires: pkgconfig(xrender)
 BuildRequires: python3dist(pygobject)
 BuildRequires: python3dist(docutils)
 BuildRequires: sassc
+BuildRequires: glslc
 
 BuildRequires: vulkan-headers
 
