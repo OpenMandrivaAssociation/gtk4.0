@@ -33,7 +33,7 @@
 %define _disable_ld_no_undefined 1
 
 Name:		%{pkgname}%{api_version}
-Version:	4.10.5
+Version:	4.12.0
 Release:	1
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
@@ -46,10 +46,7 @@ Source0:	https://download.gnome.org/sources/%{pkgname}/%{url_ver}/%{pkgname}-%{v
 # Fedora patches
 
 # OpenMandriva patches
-# Stupid gnomes want to write their own build system, but don't even
-# know about different implementations of ld, or LD environment
-# variables, or CC_LD settings in their own build system...
-Patch0:		gtk-4.6.0-fix-stupid-assumptions-about-ld-being-ld.bfd.patch
+
 # FIXME this patch is not entirely correct, but should be good enough.
 # Certainly better than failing to even compile...
 Patch1:		gtk-4.10.1-ffmpeg-6.0.patch
@@ -110,6 +107,7 @@ BuildRequires: pkgconfig(xrender)
 BuildRequires: python3dist(pygobject)
 BuildRequires: python3dist(docutils)
 BuildRequires: sassc
+BuildRequires: glslc
 
 BuildRequires: vulkan-headers
 
@@ -151,11 +149,7 @@ Summary:	%{summary}
 Group:		%{group}
 Provides:	%mklibname %{pkgname}%{api} = %{version}-%{release}
 Provides:	%mklibname %{name} = %{version}-%{release}
-#Requires:	%mklibname glib2.0
-#Requires:	%mklibname pango1.0
-#Requires:	%mklibname atk1.0_0
 Requires:	gtk4.0 = %{version}-%{release}
-#Requires:	glib2.0-common
 Obsoletes:	%{mklibname gtk+4.0 %{api} %{lib_major} } <= %{version}-%{release} 
 Provides:	%{mklibname gtk+4.0 %{api} %{lib_major} } = %{version}-%{release}
 
@@ -207,7 +201,7 @@ for writing applications with version 4 of the GTK widget toolkit.
 %prep
 %autosetup -p1 -n gtk-%{version}
 
-# (ovitters) prevent subprojects from being used, caused an issue with gtk-doc
+# subprojects caused an issue with gtk-doc
 #            https://gitlab.gnome.org/GNOME/gtk/-/issues/3219
 rm -rf subprojects
 
@@ -271,16 +265,17 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_bindir}/gtk4-query-settings
 %{_bindir}/gtk4-launch
 %{_bindir}/gtk4-update-icon-cache
-%{_mandir}/man1/gtk4-launch.1*
-%{_mandir}/man1/gtk4-update-icon-cache.1*
-#{_datadir}/themes
+%{_bindir}/gtk4-broadwayd
+%{_bindir}/gtk4-rendernode-tool
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.ColorChooser.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.Debug.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.EmojiChooser.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.FileChooser.gschema.xml
 %{_datadir}/gtk-%{api_version}/emoji/*.gresource
-%{_bindir}/gtk4-broadwayd
+%{_mandir}/man1/gtk4-launch.1*
+%{_mandir}/man1/gtk4-update-icon-cache.1*
 %{_mandir}/man1/gtk4-broadwayd.1*
+%{_mandir}/man1/gtk4-rendernode-tool.1.*
 
 %files -n %{libname}
 %doc README.md
