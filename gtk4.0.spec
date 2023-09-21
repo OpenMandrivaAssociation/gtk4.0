@@ -33,8 +33,8 @@
 %define _disable_ld_no_undefined 1
 
 Name:		%{pkgname}%{api_version}
-Version:	4.12.1
-Release:	3
+Version:	4.12.2
+Release:	1
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
 Group:		System/Libraries
@@ -85,7 +85,7 @@ BuildRequires: pkgconfig(libtiff-4)
 BuildRequires: pkgconfig(pango) >= %{pango_version}
 BuildRequires: pkgconfig(pangocairo)
 %if !  %{with bootstrap}
-BuildRequires: pkgconfig(sysprof-4)
+BuildRequires: pkgconfig(sysprof-6)
 BuildRequires: pkgconfig(sysprof-capture-4)
 BuildRequires: pkgconfig(rest-0.7)
 %endif
