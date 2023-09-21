@@ -85,7 +85,7 @@ BuildRequires: pkgconfig(libtiff-4)
 BuildRequires: pkgconfig(pango) >= %{pango_version}
 BuildRequires: pkgconfig(pangocairo)
 %if !  %{with bootstrap}
-BuildRequires: pkgconfig(sysprof-4)
+BuildRequires: pkgconfig(sysprof-6)
 BuildRequires: pkgconfig(sysprof-capture-4)
 BuildRequires: pkgconfig(rest-0.7)
 %endif
