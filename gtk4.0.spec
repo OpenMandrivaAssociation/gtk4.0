@@ -106,6 +106,7 @@ BuildRequires: pkgconfig(xrandr)
 BuildRequires: pkgconfig(xrender)
 BuildRequires: python3dist(pygobject)
 BuildRequires: python3dist(docutils)
+BuildRequires: %{_lib}harfbuzz-gir-devel
 BuildRequires: sassc
 BuildRequires: glslc
 
