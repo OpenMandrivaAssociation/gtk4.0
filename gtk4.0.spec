@@ -34,7 +34,7 @@
 
 Name:		%{pkgname}%{api_version}
 Version:	4.12.3
-Release:	1
+Release:	2
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
 Group:		System/Libraries
@@ -191,6 +191,8 @@ Requires:	%{girname} = %{version}
 Requires:	pkgconfig(gdk-pixbuf-2.0)
 Requires:	pkgconfig(atk)
 Requires:	pkgconfig(pango)
+# Not needed but used as sanity workaround after harfuzz gir splitting.
+Requires:       %{_lib}harfbuzz-gir-devel
 
 %description -n %{develname}
 This package contains the libraries and header files that are needed
