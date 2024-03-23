@@ -265,6 +265,7 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_bindir}/gtk4-update-icon-cache
 %{_bindir}/gtk4-broadwayd
 %{_bindir}/gtk4-rendernode-tool
+%{_bindir}/gtk4-path-tool
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.ColorChooser.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.Debug.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.EmojiChooser.gschema.xml
@@ -274,6 +275,7 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_mandir}/man1/gtk4-update-icon-cache.1*
 %{_mandir}/man1/gtk4-broadwayd.1*
 %{_mandir}/man1/gtk4-rendernode-tool.1.*
+%{_mandir}/man1/gtk4-path-tool.1.*
 
 %files -n %{libname}
 %doc README.md
