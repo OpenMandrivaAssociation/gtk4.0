@@ -47,10 +47,6 @@ Source0:	https://download.gnome.org/sources/%{pkgname}/%{url_ver}/%{pkgname}-%{v
 
 # OpenMandriva patches
 
-# FIXME this patch is not entirely correct, but should be good enough.
-# Certainly better than failing to even compile...
-Patch1:		gtk-4.10.1-ffmpeg-6.0.patch
-
 Requires:	common-licenses
 
 BuildRequires: autoconf-archive
@@ -214,7 +210,6 @@ rm -rf subprojects
         -Dwayland-backend=true \
         -Dbroadway-backend=true \
         -Dvulkan=enabled \
-        -Dmedia-ffmpeg=enabled \
 %if %{with gstreamer}        
         -Dmedia-gstreamer=enabled \
 %else        
