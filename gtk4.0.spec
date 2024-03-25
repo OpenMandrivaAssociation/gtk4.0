@@ -33,8 +33,8 @@
 %define _disable_ld_no_undefined 1
 
 Name:		%{pkgname}%{api_version}
-Version:	4.12.5
-Release:	3
+Version:	4.14.1
+Release:	1
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
 Group:		System/Libraries
@@ -46,10 +46,6 @@ Source0:	https://download.gnome.org/sources/%{pkgname}/%{url_ver}/%{pkgname}-%{v
 # Fedora patches
 
 # OpenMandriva patches
-
-# FIXME this patch is not entirely correct, but should be good enough.
-# Certainly better than failing to even compile...
-Patch1:		gtk-4.10.1-ffmpeg-6.0.patch
 
 Requires:	common-licenses
 
@@ -214,7 +210,6 @@ rm -rf subprojects
         -Dwayland-backend=true \
         -Dbroadway-backend=true \
         -Dvulkan=enabled \
-        -Dmedia-ffmpeg=enabled \
 %if %{with gstreamer}        
         -Dmedia-gstreamer=enabled \
 %else        
@@ -270,6 +265,7 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_bindir}/gtk4-update-icon-cache
 %{_bindir}/gtk4-broadwayd
 %{_bindir}/gtk4-rendernode-tool
+%{_bindir}/gtk4-path-tool
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.ColorChooser.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.Debug.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.EmojiChooser.gschema.xml
@@ -279,6 +275,7 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_mandir}/man1/gtk4-update-icon-cache.1*
 %{_mandir}/man1/gtk4-broadwayd.1*
 %{_mandir}/man1/gtk4-rendernode-tool.1.*
+%{_mandir}/man1/gtk4-path-tool.1.*
 
 %files -n %{libname}
 %doc README.md
@@ -289,7 +286,6 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_libdir}/gtk-%{api_version}/%{binary_version}/printbackends/*.so
 %{_libdir}/libgtk-4.so.%{lib_major}.*
 %{_libdir}/libgtk-4.so.%{lib_major}
-%{_libdir}/gtk-%{api_version}/%{binary_version}/media/libmedia-ffmpeg.so
 %if %{with gstreamer}
 %{_libdir}/gtk-%{api_version}/%{binary_version}/media/libmedia-gstreamer.so
 %endif
