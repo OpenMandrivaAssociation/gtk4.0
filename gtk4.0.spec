@@ -9,7 +9,7 @@
 %bcond_with tests
 
 # required version of various libraries
-%global glib2_version 2.65.0
+%global glib2_version 2.80.0
 %global pango_version 1.49.0
 %global atk_version 2.15.1
 %global cairo_version 1.14.0
@@ -33,7 +33,7 @@
 %define _disable_ld_no_undefined 1
 
 Name:		%{pkgname}%{api_version}
-Version:	4.14.5
+Version:	4.16.0
 Release:	1
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
@@ -103,6 +103,7 @@ BuildRequires: pkgconfig(xrandr)
 BuildRequires: pkgconfig(xrender)
 BuildRequires: python3dist(pygobject)
 BuildRequires: python3dist(docutils)
+BuildRequires: pkgconfig(harfbuzz-gobject)
 BuildRequires: %{_lib}harfbuzz-gir-devel
 BuildRequires: sassc
 BuildRequires: glslc
@@ -223,7 +224,7 @@ rm -rf subprojects
 %endif
         -Dcolord=enabled \
         -Dcloudproviders=disabled \
-        -Dgtk_doc=false \
+        -Ddocumentation=false \
         -Dman-pages=true \
         -Dtracker=enabled \
         -Dbuild-testsuite=false \
@@ -307,6 +308,7 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_bindir}/gtk4-demo-application
 %{_bindir}/gtk4-encode-symbolic-svg
 %{_bindir}/gtk4-icon-browser
+%{_bindir}/gtk4-image-tool
 %{_bindir}/gtk4-node-editor
 %{_bindir}/gtk4-print-editor
 %{_bindir}/gtk4-widget-factory
@@ -337,6 +339,7 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_mandir}/man1/gtk4-demo-application.1*
 %{_mandir}/man1/gtk4-encode-symbolic-svg.1*
 %{_mandir}/man1/gtk4-icon-browser.1*
+%{_mandir}/man1/gtk4-image-tool.1.*
 %{_mandir}/man1/gtk4-node-editor.1.*
 %{_mandir}/man1/gtk4-query-settings.1*
 %{_mandir}/man1/gtk4-widget-factory.1*
