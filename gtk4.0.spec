@@ -85,8 +85,8 @@ BuildRequires: pkgconfig(pangocairo)
 BuildRequires: pkgconfig(sysprof-6)
 BuildRequires: pkgconfig(sysprof-capture-4)
 BuildRequires: pkgconfig(rest-0.7)
-%endif
 BuildRequires: pkgconfig(tracker-sparql-3.0)
+%endif
 BuildRequires: pkgconfig(vulkan)
 BuildRequires: pkgconfig(wayland-client) >= %{wayland_version}
 BuildRequires: pkgconfig(wayland-cursor) >= %{wayland_version}
