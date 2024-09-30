@@ -1,4 +1,4 @@
-%bcond_with bootstrap
+%bcond_without bootstrap
 %if %{with bootstrap}
 # Disable gstreamer to avoid a circular build dependency between gtk4 and gst-plugins-bad. Enable it after bootstraping.
 %bcond_with gstreamer
@@ -34,7 +34,7 @@
 
 Name:		%{pkgname}%{api_version}
 Version:	4.16.2
-Release:	1
+Release:	2
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
 Group:		System/Libraries
