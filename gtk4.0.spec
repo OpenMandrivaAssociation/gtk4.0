@@ -1,4 +1,4 @@
-%bcond_without bootstrap
+%bcond_with bootstrap
 %if %{with bootstrap}
 # Disable gstreamer to avoid a circular build dependency between gtk4 and gst-plugins-bad. Enable it after bootstraping.
 %bcond_with gstreamer
@@ -34,7 +34,7 @@
 
 Name:		%{pkgname}%{api_version}
 Version:	4.16.2
-Release:	2
+Release:	3
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
 Group:		System/Libraries
@@ -85,7 +85,7 @@ BuildRequires: pkgconfig(pangocairo)
 BuildRequires: pkgconfig(sysprof-6)
 BuildRequires: pkgconfig(sysprof-capture-4)
 BuildRequires: pkgconfig(rest-0.7)
-BuildRequires: pkgconfig(tracker-sparql-3.0)
+BuildRequires: pkgconfig(tinysparql-3.0)
 %endif
 BuildRequires: pkgconfig(vulkan)
 BuildRequires: pkgconfig(wayland-client) >= %{wayland_version}
