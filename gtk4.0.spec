@@ -273,6 +273,7 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.Debug.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.EmojiChooser.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.FileChooser.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Inspector.gschema.xml
 %{_datadir}/gtk-%{api_version}/emoji/*.gresource
 %{_mandir}/man1/gtk4-launch.1*
 %{_mandir}/man1/gtk4-update-icon-cache.1*
