@@ -51,6 +51,7 @@ Requires:	common-licenses
 
 BuildRequires: autoconf-archive
 BuildRequires: cups-devel
+BuildRequires: desktop-file-utils
 BuildRequires: gettext-devel
 BuildRequires: git
 BuildRequires: gtk-doc
