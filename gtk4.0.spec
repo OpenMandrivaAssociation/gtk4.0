@@ -33,7 +33,7 @@
 %define _disable_ld_no_undefined 1
 
 Name:		%{pkgname}%{api_version}
-Version:	4.18.4
+Version:	4.18.5
 Release:	1
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
@@ -51,6 +51,7 @@ Requires:	common-licenses
 
 BuildRequires: autoconf-archive
 BuildRequires: cups-devel
+BuildRequires: desktop-file-utils
 BuildRequires: gettext-devel
 BuildRequires: git
 BuildRequires: gtk-doc
