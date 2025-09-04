@@ -286,13 +286,13 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %doc README.md
 %dir %{_libdir}/gtk-%{api_version}
 %dir %{_libdir}/gtk-%{api_version}/modules
-%dir %{_libdir}/gtk-%{api_version}/%{binary_version}
-%dir %{_libdir}/gtk-%{api_version}/%{binary_version}/printbackends
-%{_libdir}/gtk-%{api_version}/%{binary_version}/printbackends/*.so
+#dir %{_libdir}/gtk-%{api_version}/%{binary_version}
+#dir %{_libdir}/gtk-%{api_version}/%{binary_version}/printbackends
+#{_libdir}/gtk-%{api_version}/%{binary_version}/printbackends/*.so
 %{_libdir}/libgtk-4.so.%{lib_major}.*
 %{_libdir}/libgtk-4.so.%{lib_major}
 %if %{with gstreamer}
-%{_libdir}/gtk-%{api_version}/%{binary_version}/media/libmedia-gstreamer.so
+#{_libdir}/gtk-%{api_version}/%{binary_version}/media/libmedia-gstreamer.so
 %endif
 
 %files -n %{girname}
