@@ -223,7 +223,7 @@ rm -rf subprojects
         -Dman-pages=true \
         -Dbuild-testsuite=false \
         -Dbuild-tests=false \
-		-Dbuildtype=release
+		--buildtype=release
 
 %meson_build
 
