@@ -8,16 +8,6 @@
 %bcond_with gtkdoc
 %bcond_with tests
 
-# required version of various libraries
-%global glib2_version 2.80.0
-%global pango_version 1.49.0
-%global atk_version 2.15.1
-%global cairo_version 1.14.0
-%global gdk_pixbuf_version 2.30.0
-%global wayland_protocols_version 1.20
-%global wayland_version 1.14.91
-
-
 %define pkgname			gtk
 %define api			4
 %define api_version		4.0
@@ -33,7 +23,7 @@
 %define _disable_ld_no_undefined 1
 
 Name:		%{pkgname}%{api_version}
-Version:	4.18.6
+Version:	4.20.0
 Release:	1
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
@@ -56,16 +46,18 @@ BuildRequires: gettext-devel
 BuildRequires: git
 BuildRequires: gtk-doc
 BuildRequires: meson
-BuildRequires: pkgconfig(atk) >= %{atk_version}
+BuildRequires: pkgconfig(atk)
 BuildRequires: pkgconfig(atk-bridge-2.0)
 BuildRequires: pkgconfig(avahi-gobject)
-BuildRequires: pkgconfig(cairo) >= %{cairo_version}
-BuildRequires: pkgconfig(cairo-gobject) >= %{cairo_version}
+BuildRequires: pkgconfig(bash-completion)
+BuildRequires: pkgconfig(cairo)
+BuildRequires: pkgconfig(cairo-gobject)
+BuildRequires: pkgconfig(cloudproviders)
 BuildRequires: pkgconfig(colord)
 BuildRequires: pkgconfig(egl)
 BuildRequires: pkgconfig(epoxy)
-BuildRequires: pkgconfig(gdk-pixbuf-2.0) >= %{gdk_pixbuf_version}
-BuildRequires: pkgconfig(glib-2.0) >= %{glib2_version}
+BuildRequires: pkgconfig(gdk-pixbuf-2.0)
+BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: pkgconfig(gobject-introspection-1.0)
 BuildRequires: pkgconfig(graphene-gobject-1.0)
 %if %{with gstreamer}
@@ -80,7 +72,7 @@ BuildRequires: pkgconfig(librsvg-2.0)
 BuildRequires: pkgconfig(libjpeg)
 BuildRequires: pkgconfig(libpng)
 BuildRequires: pkgconfig(libtiff-4)
-BuildRequires: pkgconfig(pango) >= %{pango_version}
+BuildRequires: pkgconfig(pango)
 BuildRequires: pkgconfig(pangocairo)
 %if !  %{with bootstrap}
 BuildRequires: pkgconfig(sysprof-6)
@@ -89,10 +81,10 @@ BuildRequires: pkgconfig(rest-0.7)
 BuildRequires: pkgconfig(tinysparql-3.0)
 %endif
 BuildRequires: pkgconfig(vulkan)
-BuildRequires: pkgconfig(wayland-client) >= %{wayland_version}
-BuildRequires: pkgconfig(wayland-cursor) >= %{wayland_version}
-BuildRequires: pkgconfig(wayland-egl) >= %{wayland_version}
-BuildRequires: pkgconfig(wayland-protocols) >= %{wayland_protocols_version}
+BuildRequires: pkgconfig(wayland-client)
+BuildRequires: pkgconfig(wayland-cursor)
+BuildRequires: pkgconfig(wayland-egl)
+BuildRequires: pkgconfig(wayland-protocols)
 BuildRequires: pkgconfig(xcomposite)
 BuildRequires: pkgconfig(xcursor)
 BuildRequires: pkgconfig(xdamage)
@@ -226,11 +218,12 @@ rm -rf subprojects
 	-Dtracker=enabled \
 %endif
         -Dcolord=enabled \
-        -Dcloudproviders=disabled \
+        -Dcloudproviders=enabled \
         -Ddocumentation=false \
         -Dman-pages=true \
         -Dbuild-testsuite=false \
-        -Dbuild-tests=false
+        -Dbuild-tests=false \
+		--buildtype=release
 
 %meson_build
 
@@ -286,13 +279,13 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %doc README.md
 %dir %{_libdir}/gtk-%{api_version}
 %dir %{_libdir}/gtk-%{api_version}/modules
-%dir %{_libdir}/gtk-%{api_version}/%{binary_version}
-%dir %{_libdir}/gtk-%{api_version}/%{binary_version}/printbackends
-%{_libdir}/gtk-%{api_version}/%{binary_version}/printbackends/*.so
+#dir %{_libdir}/gtk-%{api_version}/%{binary_version}
+#dir %{_libdir}/gtk-%{api_version}/%{binary_version}/printbackends
+#{_libdir}/gtk-%{api_version}/%{binary_version}/printbackends/*.so
 %{_libdir}/libgtk-4.so.%{lib_major}.*
 %{_libdir}/libgtk-4.so.%{lib_major}
 %if %{with gstreamer}
-%{_libdir}/gtk-%{api_version}/%{binary_version}/media/libmedia-gstreamer.so
+#{_libdir}/gtk-%{api_version}/%{binary_version}/media/libmedia-gstreamer.so
 %endif
 
 %files -n %{girname}
@@ -346,3 +339,4 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_mandir}/man1/gtk4-node-editor.1.*
 %{_mandir}/man1/gtk4-query-settings.1*
 %{_mandir}/man1/gtk4-widget-factory.1*
+%{_datadir}/bash-completion/completions/
