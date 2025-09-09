@@ -23,7 +23,7 @@
 %define _disable_ld_no_undefined 1
 
 Name:		%{pkgname}%{api_version}
-Version:	4.20.0
+Version:	4.20.1
 Release:	1
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
