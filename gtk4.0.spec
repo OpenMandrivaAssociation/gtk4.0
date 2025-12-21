@@ -39,6 +39,7 @@ Source0:	https://download.gnome.org/sources/%{pkgname}/%{url_ver}/%{pkgname}-%{v
 
 Requires:	common-licenses
 
+BuildRequires:	make
 BuildRequires: autoconf-archive
 BuildRequires: cups-devel
 BuildRequires: desktop-file-utils
