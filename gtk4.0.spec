@@ -124,6 +124,9 @@ Recommends:	xdg-user-dirs-gtk
 %endif
 Recommends:	%mklibname gvfs 0
 
+# for mime directory ownership            
+Requires: shared-mime-info
+
 Requires:	%{libname} = %{version}
 Provides:	%{pkgname}%{api} = %{version}-%{release}
 
@@ -270,6 +273,7 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.FileChooser.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Inspector.gschema.xml
 %{_datadir}/gtk-%{api_version}/emoji/*.gresource
+%{_datadir}/mime/packages/gtk-mime.xml
 %{_mandir}/man1/gtk4-launch.1*
 %{_mandir}/man1/gtk4-update-icon-cache.1*
 %{_mandir}/man1/gtk4-broadwayd.1*
@@ -306,6 +310,7 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_bindir}/gtk4-encode-symbolic-svg
 #{_bindir}/gtk4-icon-browser
 %{_bindir}/gtk4-image-tool
+%{_bindir}/gtk4-icon-editor
 %{_bindir}/gtk4-node-editor
 %{_bindir}/gtk4-print-editor
 %{_bindir}/gtk4-widget-factory
@@ -315,11 +320,14 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_datadir}/applications/org.gtk.gtk4.NodeEditor.desktop
 %{_datadir}/applications/org.gtk.PrintEditor4.desktop
 %{_datadir}/applications/org.gtk.WidgetFactory4.desktop
+%{_datadir}/applications/org.gtk.Shaper.desktop
 %{_datadir}/icons/hicolor/*/apps/org.gtk.Demo4*.svg
 #{_datadir}/icons/hicolor/*/apps/org.gtk.IconBrowser4*.svg
 %{_datadir}/icons/hicolor/*/apps/org.gtk.gtk4.NodeEditor*.svg
 %{_datadir}/icons/hicolor/*/apps/org.gtk.PrintEditor4*.svg
 %{_datadir}/icons/hicolor/*/apps/org.gtk.WidgetFactory4*.svg
+%{_datadir}/icons/hicolor/scalable/apps/org.gtk.Shaper.*
+%{_datadir}/icons/hicolor/symbolic/apps/org.gtk.Shaper-symbolic.svg
 %{_datadir}/gettext/
 %{_datadir}/gir-1.0
 %{_datadir}/glib-2.0/schemas/org.gtk.Demo4.gschema.xml
