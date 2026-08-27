@@ -24,7 +24,7 @@
 
 Name:		%{pkgname}%{api_version}
 Version:	4.22.4
-Release:	1
+Release:	3
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
 Group:		System/Libraries
@@ -34,7 +34,7 @@ Source0:	https://download.gnome.org/sources/%{pkgname}/%{url_ver}/%{pkgname}-%{v
 # Backported from upstream
 
 # Fedora patches
-
+Patch50:	https://src.fedoraproject.org/rpms/gtk4/raw/7fcf0e2e16031455e04fe6b082b684c0bc15a777/f/0002-dragsource-Fix-memory-corruption-due-to-uncancelled-source.patch
 # OpenMandriva patches
 
 Requires:	common-licenses
