@@ -23,7 +23,7 @@
 %define _disable_ld_no_undefined 1
 
 Name:		%{pkgname}%{api_version}
-Version:	4.22.5
+Version:	4.24.1
 Release:	1
 Summary:        GTK graphical user interface library
 License:	LGPLv2+
@@ -307,27 +307,19 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_bindir}/gtk4-builder-tool
 %{_bindir}/gtk4-demo
 %{_bindir}/gtk4-demo-application
-%{_bindir}/gtk4-encode-symbolic-svg
-#{_bindir}/gtk4-icon-browser
 %{_bindir}/gtk4-image-tool
-%{_bindir}/gtk4-icon-editor
 %{_bindir}/gtk4-node-editor
 %{_bindir}/gtk4-print-editor
 %{_bindir}/gtk4-widget-factory
 %{_libdir}/libgtk-%{api}.so
 %{_datadir}/applications/org.gtk.Demo4.desktop
-#{_datadir}/applications/org.gtk.IconBrowser4.desktop
 %{_datadir}/applications/org.gtk.gtk4.NodeEditor.desktop
 %{_datadir}/applications/org.gtk.PrintEditor4.desktop
 %{_datadir}/applications/org.gtk.WidgetFactory4.desktop
-%{_datadir}/applications/org.gtk.Shaper.desktop
 %{_datadir}/icons/hicolor/*/apps/org.gtk.Demo4*.svg
-#{_datadir}/icons/hicolor/*/apps/org.gtk.IconBrowser4*.svg
 %{_datadir}/icons/hicolor/*/apps/org.gtk.gtk4.NodeEditor*.svg
 %{_datadir}/icons/hicolor/*/apps/org.gtk.PrintEditor4*.svg
 %{_datadir}/icons/hicolor/*/apps/org.gtk.WidgetFactory4*.svg
-%{_datadir}/icons/hicolor/scalable/apps/org.gtk.Shaper.*
-%{_datadir}/icons/hicolor/symbolic/apps/org.gtk.Shaper-symbolic.svg
 %{_datadir}/gettext/
 %{_datadir}/gir-1.0
 %{_datadir}/glib-2.0/schemas/org.gtk.Demo4.gschema.xml
@@ -335,15 +327,12 @@ kill $(cat /tmp/.X$XDISPLAY-lock) ||:
 %{_datadir}/gtk-4.0/gtk4builder.rng
 %{_datadir}/gtk-4.0/valgrind/
 %{_datadir}/metainfo/org.gtk.Demo4.appdata.xml
-#{_datadir}/metainfo/org.gtk.IconBrowser4.appdata.xml
 %{_datadir}/metainfo/org.gtk.gtk4.NodeEditor.appdata.xml
 %{_datadir}/metainfo/org.gtk.PrintEditor4.appdata.xml
 %{_datadir}/metainfo/org.gtk.WidgetFactory4.appdata.xml
 %{_mandir}/man1/gtk4-builder-tool.1*
 %{_mandir}/man1/gtk4-demo.1*
 %{_mandir}/man1/gtk4-demo-application.1*
-%{_mandir}/man1/gtk4-encode-symbolic-svg.1*
-#{_mandir}/man1/gtk4-icon-browser.1*
 %{_mandir}/man1/gtk4-image-tool.1.*
 %{_mandir}/man1/gtk4-node-editor.1.*
 %{_mandir}/man1/gtk4-query-settings.1*
